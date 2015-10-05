@@ -495,7 +495,7 @@ class HttpExt(config: Config)(implicit system: ActorSystem) extends akka.actor.E
 
   private def sslTlsStage(httpsContext: Option[HttpsContext], role: Role) =
     httpsContext match {
-      case Some(hctx) ⇒ SslTls(hctx.sslContext, hctx.firstSession, role)
+      case Some(hctx) ⇒ SslTls(hctx.sslContext, hctx.firstSession, role, IgnoreBoth)
       case None       ⇒ SslTlsPlacebo.forScala
     }
 }
